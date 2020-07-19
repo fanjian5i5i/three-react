@@ -1,45 +1,75 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet'
+import { useTransition, animated } from 'react-spring'
 // import "https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
 
+let Icons = () =>{
+  let icons = []
+  let i = 50
 
+  let changeOpacity = (e) =>{
+    let lat = e.target.options.position[0] + 0.001;
+    let latO = e.target.options.position[0]
+    let lng = e.target.options.position[1];
+    e.target.setLatLng([lat,lng])
+    setTimeout(()=>{
+      e.target.setLatLng([latO,lng])
+    },100)
+    // e.target.options.icon.options.position = [e.target.options.icon.options.position[0]+0.00001,e.target.options.icon.options.position[1]]
+  }
+  while(i>0){
+    icons.push(
+      <Marker onMouseOver={changeOpacity} position={[ Math.random()*0.05+42.33,Math.random()*0.2-71.2]} icon={new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+(Math.random()*100).toFixed()+'.png',
+        iconAnchor: [20, 20]
+        })} key={i}/>
+    )
+    i--
+  }
+  return (icons)
 
-export const pointerIcon = new L.Icon({
-    iconUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png',
-    // iconRetinaUrl: '../assets/pointerIcon.svg',
-    // iconAnchor: [5, 55],
-    iconAnchor: [20, 40],
-    // popupAnchor: [10, -44],
-    // iconSize: [25, 55],
-    // shadowUrl: '../assets/marker-shadow.png',
-    // shadowSize: [68, 95],
-    // shadowAnchor: [20, 92],
-    className: 'bounce'
+}
+
+let Item = () =>{
+  const [toggle, set] = useState(false)
+  const transitions = useTransition(toggle, null, {
+  from: { position: 'absolute', opacity: 0 },
+  enter: { opacity: 1 },
+  leave: { opacity: 0 },
   })
+  return transitions.map(({ item, key, props }) => 
+  item
+    ? <animated.div style={props} onClick={()=>set(!toggle)}>😄</animated.div>
+    : <animated.div style={props} onClick={()=>set(!toggle)}>🤪</animated.div>
+  )
+}
 
 
 export default class SimpleExample extends Component{
   state = {
-    lat: 51.505,
-    lng: -0.09,
+    lat: 42.36,
+    lng: -71.05,
     zoom: 13,
   }
 
   render() {
     const position = [this.state.lat, this.state.lng]
+    const iconPosition = [(this.state.lat-0.01), this.state.lng-0.01]
+
     return (
-      <Map center={position} zoom={this.state.zoom} style={{height:300}}>
+      <>
+      <Map center={position} zoom={this.state.zoom} style={{height:500}}>
         <TileLayer
-          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attribution">CARTO</a>'
+          url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png"
         />
-        <Marker position={position} icon={pointerIcon}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
+
+        <Icons/>
+        
       </Map>
+      <Item/>
+      </>
     )
   }
 }

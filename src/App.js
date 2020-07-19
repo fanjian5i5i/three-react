@@ -11,6 +11,9 @@ import './App.css';
 function App() {
   return (
 <>
+<div className="bg-fixed sm:bg-local md:bg-scroll lg:bg-local xl:bg-fixed">
+  <Map/>
+</div>
 <Navbar/>
 <div className="max-w-sm rounded overflow-hidden shadow-lg">
 <Bighead className="w-full"/>
@@ -28,9 +31,7 @@ function App() {
   <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mt-2 ml-20">#Public Speaker</span>
 </div>
 </div>
-<div className="max-w-sm rounded overflow-hidden shadow-lg">
-  <Map/>
-</div>
+
 
 </>
   );
