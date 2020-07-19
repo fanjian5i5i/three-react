@@ -8,7 +8,7 @@ let Icons = () =>{
   let icons = []
   let i = 50
 
-  let changeOpacity = (e) =>{
+  let bounce = (e) =>{
     let lat = e.target.options.position[0] + 0.001;
     let latO = e.target.options.position[0]
     let lng = e.target.options.position[1];
@@ -20,7 +20,7 @@ let Icons = () =>{
   }
   while(i>0){
     icons.push(
-      <Marker onMouseOver={changeOpacity} position={[ Math.random()*0.05+42.33,Math.random()*0.2-71.2]} icon={new L.Icon({
+      <Marker onMouseOver={bounce} onClick={bounce} position={[ Math.random()*0.05+42.33,Math.random()*0.2-71.2]} icon={new L.Icon({
         iconUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+(Math.random()*100).toFixed()+'.png',
         iconAnchor: [20, 20]
         })} key={i}/>
