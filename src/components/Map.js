@@ -58,8 +58,7 @@ export default class SimpleExample extends Component{
     const iconPosition = [(this.state.lat-0.01), this.state.lng-0.01]
 
     return (
-      <>
-      <Map center={position} zoom={this.state.zoom} style={{height:500}}>
+      <Map center={position} zoom={this.state.zoom} style={{height:700,opacity:.5}} zoomControl={false}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attribution">CARTO</a>'
           url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png"
@@ -68,8 +67,6 @@ export default class SimpleExample extends Component{
         <Icons/>
         
       </Map>
-      <Item/>
-      </>
     )
   }
 }
