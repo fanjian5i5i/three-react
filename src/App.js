@@ -15,20 +15,20 @@ function App() {
   <Map/>
 </div>
 <Navbar/>
-<div className="max-w-sm rounded overflow-hidden shadow-lg">
+<div className="max-w-sm rounded overflow-hidden shadow-lg absolute m-8 mt-16 right-0 top-0 bg-white">
 <Bighead className="w-full"/>
 <div className="px-6 py-4">
-  <div className="font-bold text-purple-500 text-xl mb-2">
-    Blessing Krofegha
+  <div className="font-bold text-blue-500 text-xl mb-2">
+    Fan Jian
   </div>
   <p className="text-gray-700 text-base">
-    When i’m not coding i switch to netflix with biscuits and cold tea as my companion. <span></span>😜
+  When I am not coding, I babysit my kids without getting paid... <span></span>😜
   </p>
 </div>
 <div className="px-6 py-4">
   <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Software Engineer</span>
-  <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Writter</span>
-  <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mt-2 ml-20">#Public Speaker</span>
+  <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#Bodybuilder</span>
+  <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mt-2 ml-20">#Exotic Gamer</span>
 </div>
 </div>
 
