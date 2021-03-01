@@ -13,7 +13,7 @@
     "react-leaflet": "^2.7.0",
     "react-scripts": "3.4.1",
     "react-spring": "^8.0.27",
-    "three": "^0.118.3",
+    "three": "^0.125.0",
     "three-collada-loader": "0.0.1"
   },
   "scripts": {
